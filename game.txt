@@ -1,0 +1,70 @@
+Let's make a game!
+	name: Test 1
+	by: Pete
+	desc: This a test
+	created:10/7/22
+	version: 1
+ 
+Settings
+	background:https://www.iwata-airbrush.com/mm5/graphics/00000001/CX2025-B1.jpg
+	tiling background:https://www.iwata-airbrush.com/mm5/graphics/00000001/CX2025-B1.jpg
+	building cost increase:105%
+	building cost refund:25%
+	spritesheet:Name, icon:https://www.iwata-airbrush.com/mm5/graphics/00000001/CX2025-B1.jpg
+	stylesheet:stylesheet.txt
+ 
+Layout
+	*resources
+		contains:Resources
+		header:These are your resources
+	*buildings
+		contains:Buildings
+		header:These are things you can build to store mommies, who will attract other mommies
+		tooltip origin:left
+	*unlockables
+		contains:Upgrades, Achievements
+		names:hide
+ 
+Buttons
+	*mommyButton
+		name:Make a Mommy!
+		desc:Click this hot mommy to get more hot mommies!!
+		on click:anim icon wobble
+		on click:yield 1 mommy
+ 
+Resources
+	*mommy|mommies
+		name:Mommy|Mommies
+ 
+Buildings
+	*TEMPLATE
+		on click:anim glow
+ 
+	*blanket
+  name:Blanket
+  desc:A nice comfy blanket for your hot mommy to rest on. Will attract 1 mommy per second.
+  on tick:yield 1 mommies
+  cost:100 mommies
+
+	*tent
+  name:Tent
+  desc:A warm tent for your hot mommies to rest in. Will attract 4 more mommies per second.
+  on tick:yield 4 mommies
+  cost:500 mommies
+
+	*shelter
+  name:Shelter
+  desc:A shelter can house your mommies! It's such an upgrade, it attracts mommies from all around! Attracts 100 mommies per second.
+  on tick:yield 100 mommies
+  cost:2000 mommies
+
+Upgrades
+	*TEMPLATE
+		on click:anim glow
+
+	*attraction1
+  name:Attraction
+  desc:Ups your attraction level by 1. You can attract 100% more hot mommies now.
+  cost:1000 mommies
+  passive:multiply mommy yield of mommyButton by 2
+  req:1000 mommies:earned
